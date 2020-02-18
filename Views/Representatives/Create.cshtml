@@ -1,0 +1,34 @@
+﻿@model MeuHelp.Models.Representative
+
+@{
+    ViewData["Title"] = "Adicionar vendedor";
+}
+<h2 class="display-4">Adicionar vendedor</h2>
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-6">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row botao">
+        <div class="col-md-5">
+            <a asp-action="Index">
+                <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+            </a>
+        </div>
+        <div class="col-md-1">
+            <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+        </div>
+        <p id="status"></p>
+    </div>
+</form>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

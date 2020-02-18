@@ -1,0 +1,216 @@
+﻿@model MeuHelp.Models.ViewModels.LegalpersonFormViewModel
+
+@{
+    ViewData["Title"] = "Editar pessoa jurídica";
+}
+<h2 class="display-4">Editar pessoa jurídica</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Legalperson.Id" />
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Cnpj" class="control-label">Cnpj:</label>
+                <input asp-for="Legalperson.Cnpj" name="Legalperson.Cnpj" id="Legalperson.Cnpj" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="15" onblur="pesquisaCnpj(this.value)" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Legalperson.RazaoSocial" class="control-label">Razão social:</label>
+                <input asp-for="Legalperson.RazaoSocial" name="Legalperson.RazaoSocial" id="Legalperson.RazaoSocial" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Cep" class="control-label">Cep:</label>
+                <input asp-for="Legalperson.Cep" name="Legalperson.Cep" id="Legalperson.Cep" class="form-control form-control-sm" maxlength="8" onblur="pesquisacep(this.value)" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Legalperson.Logradouro" class="control-label">Logradouro:</label>
+                <input asp-for="Legalperson.Logradouro" name="Legalperson.Logradouro" id="Legalperson.Logradouro" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Legalperson.Numero" class="control-label">Número:</label>
+                <input asp-for="Legalperson.Numero" name="Legalperson.Numero" id="Legalperson.Numero" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Legalperson.Complemento" class="control-label">Comp.:</label>
+                <input asp-for="Legalperson.Complemento" name="Legalperson.Complemento" id="Legalperson.Complemento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Legalperson.Bairro" class="control-label">Bairro:</label>
+                <input asp-for="Legalperson.Bairro" name="Legalperson.Bairro" id="Legalperson.Bairro" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Legalperson.Cidade" class="control-label">Cidade:</label>
+                <input asp-for="Legalperson.Cidade" name="Legalperson.Cidade" id="Legalperson.Cidade" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Estado" class="control-label">Estado:</label>
+                <input asp-for="Legalperson.Estado" name="Legalperson.Estado" id="Legalperson.Estado" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Responsável</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Nome" class="control-label">Nome resp.:</label>
+                <input asp-for="Legalperson.Nome" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Email" class="control-label">E-mail:</label>
+                <input asp-for="Legalperson.Email" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.DataNascimento" class="control-label">Data nasc.:</label>
+                <input type="text" asp-for="Legalperson.DataNascimento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Legalperson.Rg" class="control-label">Rg:</label>
+                <input asp-for="Legalperson.Rg" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Legalperson.Cpf" class="control-label">Cpf:</label>
+                <input asp-for="Legalperson.Cpf" name="Legalperson.Cpf" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Celular" class="control-label">Celular:</label>
+                <input asp-for="Legalperson.Celular" name="Legalperson.Celular" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.Cargo" class="control-label">Cargo:</label>
+                <input asp-for="Legalperson.Cargo" name="Legalperson.Cargo" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-8">
+            <h4>Financeiro</h4>
+        </div>
+        <div class="col-4">
+            <h4>Tipo de serviço</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.DataVencimento" class="control-label">Data vencimento:</label>
+                <input type="text" asp-for="Legalperson.DataVencimento" name="Legalperson.DataVencimento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.ValorContrato" class="control-label">Valor contrato:</label>
+                <input asp-for="Legalperson.ValorContrato" name="Legalperson.ValorContrato" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.InicioVigencia" class="control-label">Inicio da vigência:</label>
+                <input type="text" asp-for="Legalperson.InicioVigencia" name="Legalperson.InicioVigencia" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Legalperson.FimVigencia" class="control-label">Final da vigência:</label>
+                <input type="text" asp-for="Legalperson.FimVigencia" name="Legalperson.FimVigencia" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Legalperson.TypeserviceId" class="control-label">Tipo de serviço:</label>
+                <select asp-for="Legalperson.TypeserviceId" class="form-control form-control-sm" asp-items="@(new SelectList(Model.Typeservices,"Id","Nome"))"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row botao">
+        <div class="col-md-11">
+            <a asp-action="Index">
+                <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+            </a>
+        </div>
+        <div class="col-md-1">
+            <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+        </div>
+    </div>
+</form>
+<script>
+    //Legalperson CEP
+    //function meu_callback(conteudo) {
+    //    if (!("erro" in conteudo)) {
+    //        document.getElementById('Legalperson.Logradouro').value = (conteudo.logradouro);
+    //        document.getElementById('Legalperson.Bairro').value = (conteudo.bairro);
+    //        document.getElementById('Legalperson.Cidade').value = (conteudo.localidade);
+    //        document.getElementById('Legalperson.Estado').value = (conteudo.uf);
+    //    }
+    //    else {
+    //        limpa_formulário_cep();
+    //        alert("CEP não encontrado.");
+    //    }
+    //}
+    //function pesquisacep(valor) {
+    //    var cep = valor.replace(/\D/g, '');
+    //    if (cep != "") {
+    //        var script = document.createElement('script');
+    //        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+    //console.log(script);
+    //        document.body.appendChild(script);
+    //        document.getElementById('Legalperson.Logradouro').value = (script.logradouro);
+    //        document.getElementById('Legalperson.Bairro').value = (script.bairro);
+    //        document.getElementById('Legalperson.Cidade').value = (script.localidade);
+    //        document.getElementById('Legalperson.Estado').value = (script.uf);
+    //    }
+    //    else {
+    //        limpa_formulário_cep();
+    //        alert("Formato de CEP inválido.");
+    //    }
+    //};
+
+    function pesquisaCnpj(cnpj) {
+        cnpj = cnpj.replace(/\D/g, '');
+        if (cnpj != "") {
+            var script = document.createElement('script');
+            script.src = 'https://www.receitaws.com.br/v1/cnpj/' + encodeURI(cnpj) + '?callback=jsonp_z0p2';
+            document.body.appendChild(script);
+        }
+    };
+    function jsonp_z0p2(conteudo) {
+            document.getElementById('Legalperson.Logradouro').value = (conteudo.logradouro);
+            document.getElementById('Legalperson.Bairro').value = (conteudo.bairro);
+            document.getElementById('Legalperson.Cidade').value = (conteudo.municipio);
+            document.getElementById('Legalperson.Estado').value = (conteudo.uf);
+            document.getElementById('Legalperson.RazaoSocial').value = (conteudo.nome);
+            document.getElementById('Legalperson.Cep').value = (conteudo.cep.replace(/\D/g, ''));
+            document.getElementById('Legalperson.Numero').value = (conteudo.numero);
+    };
+</script>

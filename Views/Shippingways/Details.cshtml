@@ -1,0 +1,19 @@
+﻿@model MeuHelp.Models.Shippingway
+@{
+    ViewData["Title"] = "Detalhar forma de envio";
+}
+<h2 class="display-4">Detalhar forma de envio</h2>
+<div>
+    <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+        </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+</div>

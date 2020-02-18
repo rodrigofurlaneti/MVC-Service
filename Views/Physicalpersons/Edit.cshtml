@@ -1,0 +1,319 @@
+﻿@model MeuHelp.Models.ViewModels.PhysicalpersonFormViewModel;
+
+@{
+    ViewData["Title"] = "Editar pessoa física";
+}
+<h2 class="display-4">Editar pessoa física</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Physicalperson.Id" />
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Cpf" class="control-label">Cpf:</label>
+                <input asp-for="Physicalperson.Cpf" name="Physicalperson.Cpf" id="Physicalperson.Cpf" class="form-control form-control-sm" maxlength="15" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.DataNascimento" class="control-label">Data de nasc.:</label>
+                <input asp-for="Physicalperson.DataNascimento" name="Physicalperson.DataNascimento" id="Physicalperson.DataNascimento" type="text" maxlength="15" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Rg" class="control-label">Rg:</label>
+                <input asp-for="Physicalperson.Rg" class="form-control form-control-sm" type="number" maxlength="15" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Nome" class="control-label">Nome:</label>
+                <input asp-for="Physicalperson.Nome" name="Physicalperson.Nome" id="Physicalperson.Nome" maxlength="50" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Email" class="control-label">E-mail:</label>
+                <input asp-for="Physicalperson.Email" class="form-control form-control-sm" maxlength="50" />
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Celular" class="control-label">Celular:</label>
+                <input asp-for="Physicalperson.Celular" class="form-control form-control-sm" maxlength="15" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Telefone" class="control-label">Telefone:</label>
+                <input asp-for="Physicalperson.Telefone" class="form-control form-control-sm" maxlength="15" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Physicalperson.NomeMae" class="control-label">Nome da mãe:</label>
+                <input asp-for="Physicalperson.NomeMae" class="form-control form-control-sm" maxlength="90" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Physicalperson.ShippingwayId" class="control-label">Forma de envio do boleto:</label>
+                <select asp-for="Physicalperson.ShippingwayId" asp-items="@(new SelectList(Model.Shippingways,"Id","Nome"))" class="form-control form-control-sm"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="form-group">
+                <label asp-for="Physicalperson.Sexo" class="control-label">Sexo:</label>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="gridRadios1" value="Masculino" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Masculino
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="gridRadios2" value="Feminino">
+                            <label class="form-check-label" for="gridRadios2">
+                                Feminino
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="form-row">
+        <hr />
+        <div class="col-md-12">
+            <h4>Endereço</h4>
+            <hr />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Cep" class="control-label">Cep:</label>
+                <input asp-for="Physicalperson.Cep" name="Physicalperson.Cep" maxlength="8" id="Physicalperson.Cep" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" onblur="pesquisacep(this.value)" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Numero" class="control-label">Número:</label>
+                <input asp-for="Physicalperson.Numero" maxlength="6" name="Physicalperson.Numero" id="Physicalperson.Numero" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Complemento" class="control-label">Comp.:</label>
+                <input asp-for="Physicalperson.Complemento" maxlength="6" name="Physicalperson.Complemento" id="Physicalperson.Complemento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Logradouro" class="control-label">Logradouro:</label>
+                <input asp-for="Physicalperson.Logradouro" maxlength="20" name="Physicalperson.Logradouro" id="Physicalperson.Logradouro" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Bairro" class="control-label">Bairro:</label>
+                <input asp-for="Physicalperson.Bairro" maxlength="10" name="Physicalperson.Bairro" id="Physicalperson.Bairro" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Cidade" class="control-label">Cidade:</label>
+                <input asp-for="Physicalperson.Cidade" maxlength="13" name="Physicalperson.Cidade" id="Physicalperson.Cidade" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.Estado" class="control-label">Estado:</label>
+                <input asp-for="Physicalperson.Estado" maxlength="13" name="Physicalperson.Estado" id="Physicalperson.Estado" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <hr />
+        <div class="col-md-6">
+            <h4>Veículo</h4>
+            <hr />
+        </div>
+        <div class="col-md-6">
+            <h4>Pagamento</h4>
+            <hr />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-5">
+            <h4>Veículo</h4>
+            <hr />
+        </div>
+        <div class="col-md-2">
+            <h4>Pagamento</h4>
+            <hr />
+        </div>
+        <div class="col-md-2">
+            <h4>Odonto</h4>
+            <hr />
+        </div>
+        <div class="col-md-3">
+            <h4>Plano</h4>
+            <hr />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Physicalperson.PlacaVeiculo" class="control-label">Placa:</label>
+                <input asp-for="Physicalperson.PlacaVeiculo" maxlength="7" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.AnoVeiculo" class="control-label">Ano:</label>
+                <input asp-for="Physicalperson.AnoVeiculo" maxlength="4" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Physicalperson.ModeloVeiculo" class="control-label">Modelo veículo:</label>
+                <input asp-for="Physicalperson.ModeloVeiculo" maxlength="10" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.DataPagamento">Dia para o pagamento:</label>
+                    <select asp-for="Physicalperson.DataPagamento" multiple="" class="form-control form-control-sm" id="exampleSelect2">
+                        <option>Isento</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.Odonto">Odonto:</label>
+                    <select asp-for="Physicalperson.Odonto" multiple="" class="form-control form-control-sm" id="Physicalperson.Odonto">
+                        <option>Sem plano</option>
+                        <option>Bem +</option>
+                        <option>Inpla</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Physicalperson.PlanId" class="control-label">Plano:</label>
+                <select asp-for="Physicalperson.PlanId" asp-items="@(new SelectList(Model.Plans,"Id","Nome"))" class="form-control form-control-sm"></select>
+            </div>
+        </div>
+    </div>
+        <div class="form-row">
+            <div class="col-md-4">
+                <h4>Periodo de Vigência do Contrato</h4>
+                <hr />
+            </div>
+            <div class="col-md-4">
+                <h4>Informações de Valores</h4>
+                <hr />
+            </div>
+            <div class="col-md-2">
+                <h4>Vendas</h4>
+                <hr />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group-sm col-md-2">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.InicioVigencia" class="control-label">Inicio da vigência:</label>
+                    <input asp-for="Physicalperson.InicioVigencia" name="Physicalperson.InicioVigencia" type="text" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group-sm col-md-2">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.FimVigencia" class="control-label">Fim da vigência:</label>
+                    <input asp-for="Physicalperson.FimVigencia" name="Physicalperson.FimVigencia" type="text" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group-sm col-md-2">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.DataVenda" class="control-label">Data da venda:</label>
+                    <input asp-for="Physicalperson.DataVenda" name="Physicalperson.DataVenda" type="text" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group-sm col-md-2">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.DataAdesao" class="control-label">Inicio da vigência:</label>
+                    <input asp-for="Physicalperson.DataAdesao" name="Physicalperson.DataVenda" type="text" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group-sm col-md-2">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.DataVencimentoAdesao" class="control-label">Fim da vigência:</label>
+                    <input asp-for="Physicalperson.DataVencimentoAdesao" name="Physicalperson.DataVenda" type="text" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="form-group-sm col-md-2">
+                <div class="form-group">
+                    <label asp-for="Physicalperson.SaleschannelId" class="control-label">Canal de venda:</label>
+                    <select asp-for="Physicalperson.SaleschannelId" asp-items="@(new SelectList(Model.Saleschannels,"Id","Nome"))" class="form-control form-control-sm"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-row botao">
+            <div class="col-md-11">
+                <a asp-action="Index">
+                    <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+                </a>
+            </div>
+            <div class="col-md-1">
+                <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+            </div>
+            <p id="status"></p>
+        </div>
+</form>
+<script>
+ //Physicalperson CEP
+ //       function meu_callback(conteudo) {
+ //       if (!("erro" in conteudo)) {
+ //           document.getElementById('Physicalperson.Logradouro').value=(conteudo.logradouro);
+ //           document.getElementById('Physicalperson.Bairro').value=(conteudo.bairro);
+ //           document.getElementById('Physicalperson.Cidade').value=(conteudo.localidade);
+ //           document.getElementById('Physicalperson.Estado').value=(conteudo.uf);
+ //       }
+ //       else {
+ //           limpa_formulário_cep();
+ //           alert("CEP não encontrado.");
+ //       }
+ //   }
+ //function pesquisacep(valor) {
+ //       var cep = valor.replace(/\D/g, '');
+ //    if (cep != "")
+ //    {
+ //        var script = document.createElement('script');
+ //        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+ //        console.log(script);
+ //        document.body.appendChild(script);
+ //        document.getElementById('Physicalperson.Logradouro').value = (script.logradouro);
+ //        document.getElementById('Physicalperson.Bairro').value = (script.bairro);
+ //        document.getElementById('Physicalperson.Cidade').value = (script.localidade);
+ //        document.getElementById('Physicalperson.Estado').value = (script.uf);
+ //    }
+ //    else
+ //    {
+ //               limpa_formulário_cep();
+ //               alert("Formato de CEP inválido.");
+ //    }
+ //   };
+</script>
+

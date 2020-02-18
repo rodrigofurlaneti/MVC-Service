@@ -1,0 +1,29 @@
+﻿@model MeuHelp.Models.Plan
+
+@{
+    ViewData["Title"] = "Apagar plano";
+}
+<h2 class="display-4">Apagar plano</h2>
+<h3>Tem certeza de que deseja excluir isso?</h3>
+<div>
+    <h4>Plano</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            Plano
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            Valor
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>|
+        <input type="submit" value="Apagar" class="btn btn-sm btn-danger" />
+    </form>
+</div>

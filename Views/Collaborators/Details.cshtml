@@ -1,0 +1,182 @@
+﻿@model MeuHelp.Models.Collaborator
+@{
+    ViewData["Title"] = "Detalhar colaborador";
+}
+<h2 class="display-4">Detalhar colaborador</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Nome
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            Pessoa judídica
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Legalperson.RazaoSocial)
+        </dd>
+        <dt>
+            Rg
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rg)
+        </dd>
+        <dt>
+            Cpf
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt>
+            Sexo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sexo)
+        </dd>
+        <dt>
+            Nome da mãe
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomeMae)
+        </dd>
+        <dt>
+            Data de nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+        <dt>
+            Telefone
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt>
+            Celular
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt>
+            E-mail
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Logradouro
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+        <dt>
+            Número
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt>
+            Complemento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Complemento)
+        </dd>
+        <dt>
+            Cep
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            Bairro
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt>
+            Cidade
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt>
+            Estado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt>
+            Data da adesão
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataAdesao)
+        </dd>
+        <dt>
+            Data do pagamento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataPagamento)
+        </dd>
+        <dt>
+            Data de vencimento da adesao
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataVencimentoAdesao)
+        </dd>
+        <dt>
+            Data da venda
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataVenda)
+        </dd>
+        <dt>
+            Inicio da vigencia
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InicioVigencia)
+        </dd>
+        <dt>
+            Fim da vigencia
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FimVigencia)
+        </dd>
+        <dt>
+            Placa do veiculo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PlacaVeiculo)
+        </dd>
+        <dt>
+            Plano
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Plan.Nome)
+        </dd>
+        <dt>
+            Odonto
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Odonto)
+        </dd>
+        <dt>
+            Canal de venda
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Saleschannel.Nome)
+        </dd>
+        <dt>
+            Forma de envio
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Shippingway.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+</div>

@@ -1,0 +1,251 @@
+﻿@model MeuHelp.Models.ViewModels.ServiceproviderFormViewModel
+@{
+    ViewData["Title"] = "Adicionar prestador de serviço - Pessoa jurídica";
+}
+    <h2 class="display-4">Adicionar prestador de serviço - Pessoa jurídica</h2>
+<form asp-action="Create">
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Tipo de serviço</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.TypeserviceId" class="control-label">Tipo de serviço:</label>
+                <select asp-for="Serviceprovider.TypeserviceId" class="form-control form-control-sm" asp-items="@(new SelectList(Model.Typeservices,"Id","Nome"))"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Dados do Fornecedor</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Cnpj" class="control-label">Cnpj:</label>
+                <input asp-for="Serviceprovider.Cnpj" name="Serviceprovider.Cnpj" id="Serviceprovider.Cnpj" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="15" onblur="pesquisaCnpj(this.value)" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.RazaoSocial" class="control-label">Razão social:</label>
+                <input asp-for="Serviceprovider.RazaoSocial" name="Serviceprovider.RazaoSocial" id="Serviceprovider.RazaoSocial" class="form-control form-control-sm" maxlength="50"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Cep" class="control-label">Cep:</label>
+                <input asp-for="Serviceprovider.Cep" name="Serviceprovider.Cep" id="Serviceprovider.Cep" class="form-control form-control-sm" maxlength="8" onblur="pesquisacep(this.value)" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Logradouro" class="control-label">Logradouro:</label>
+                <input asp-for="Serviceprovider.Logradouro" name="Serviceprovider.Logradouro" id="Serviceprovider.Logradouro" class="form-control form-control-sm" maxlength="50"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Numero" class="control-label">Número:</label>
+                <input asp-for="Serviceprovider.Numero" name="Serviceprovider.Numero" id="Serviceprovider.Numero" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Complemento" class="control-label">Comp.:</label>
+                <input asp-for="Serviceprovider.Complemento" name="Serviceprovider.Complemento" id="Serviceprovider.Complemento" class="form-control form-control-sm" maxlength="20"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Bairro" class="control-label">Bairro:</label>
+                <input asp-for="Serviceprovider.Bairro" name="Serviceprovider.Bairro" id="Serviceprovider.Bairro" class="form-control form-control-sm" maxlength="20"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Cidade" class="control-label">Cidade:</label>
+                <input asp-for="Serviceprovider.Cidade" name="Serviceprovider.Cidade" id="Serviceprovider.Cidade" class="form-control form-control-sm" maxlength="20"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Estado" class="control-label">Estado:</label>
+                <input asp-for="Serviceprovider.Estado" name="Serviceprovider.Estado" id="Serviceprovider.Estado" class="form-control form-control-sm" maxlength="20"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Responsável</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Nome" class="control-label">Nome resp.:</label>
+                <input asp-for="Serviceprovider.Nome" class="form-control form-control-sm" maxlength="90"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Email" class="control-label">E-mail:</label>
+                <input asp-for="Serviceprovider.Email" class="form-control form-control-sm" maxlength="40"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.DataNascimento" class="control-label">Data nasc.:</label>
+                <input type="date" asp-for="Serviceprovider.DataNascimento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Rg" class="control-label">Rg:</label>
+                <input asp-for="Serviceprovider.Rg" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="11"/>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Cpf" class="control-label">Cpf:</label>
+                <input asp-for="Serviceprovider.Cpf" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="11"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Telefone" class="control-label">Telefone:</label>
+                <input asp-for="Serviceprovider.Telefone" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.Celular" class="control-label">Celular:</label>
+                <input asp-for="Serviceprovider.Celular" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="10"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Negociação Financeira</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorSaida" class="control-label">Valor de saída:</label>
+                <input asp-for="Serviceprovider.ValorSaida" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.KmSaida" class="control-label">Km de saída:</label>
+                <input asp-for="Serviceprovider.KmSaida" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorExesso" class="control-label">Valor de exesso:</label>
+                <input asp-for="Serviceprovider.ValorExesso" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.KmExesso" class="control-label">Km de exesso:</label>
+                <input asp-for="Serviceprovider.KmExesso" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorPatins" class="control-label">Valor unidade patins:</label>
+                <input asp-for="Serviceprovider.ValorPatins" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorRoda" class="control-label">Valor unidade Roda:</label>
+                <input asp-for="Serviceprovider.ValorRoda" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorDiaEstacionamento" class="control-label">Valor dia estacionamento:</label>
+                <input asp-for="Serviceprovider.ValorDiaEstacionamento" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorDestombamento" class="control-label">Valor destombamento:</label>
+                <input asp-for="Serviceprovider.ValorDestombamento" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Serviceprovider.ValorHoraParada" class="control-label">Valor hora parada:</label>
+                <input asp-for="Serviceprovider.ValorHoraParada" class="form-control" maxlength="10"/>
+            </div>
+        </div>
+    </div>
+        <div class="form-row botao">
+            <div class="col-md-11">
+                <a asp-action="Index">
+                    <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+                </a>
+            </div>
+            <div class="col-md-1">
+                <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+            </div>
+        </div>
+
+</form>
+<script>
+    //Service Provider CEP
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            document.getElementById('Serviceprovider.Logradouro').value = (conteudo.logradouro);
+            document.getElementById('Serviceprovider.Bairro').value = (conteudo.bairro);
+            document.getElementById('Serviceprovider.Cidade').value = (conteudo.localidade);
+            document.getElementById('Serviceprovider.Estado').value = (conteudo.uf);
+        }
+        else {
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+    function pesquisacep(valor) {
+        var cep = valor.replace(/\D/g, '');
+        if (cep != "") {
+            var script = document.createElement('script');
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+            console.log(script);
+            document.body.appendChild(script);
+        }
+        else {
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+        }
+    };
+    function pesquisaCnpj(cnpj) {
+        cnpj = cnpj.replace(/\D/g, '');
+        if (cnpj != "") {
+            var script = document.createElement('script');
+            script.src = 'https://www.receitaws.com.br/v1/cnpj/' + encodeURI(cnpj) + '?callback=jsonp_z0p2';
+            document.body.appendChild(script);
+        }
+    };
+    function jsonp_z0p2(conteudo) {
+        document.getElementById('Serviceprovider.Logradouro').value = (conteudo.logradouro);
+        document.getElementById('Serviceprovider.Bairro').value = (conteudo.bairro);
+        document.getElementById('Serviceprovider.Cidade').value = (conteudo.municipio);
+        document.getElementById('Serviceprovider.Estado').value = (conteudo.uf);
+        document.getElementById('Serviceprovider.RazaoSocial').value = (conteudo.nome);
+        document.getElementById('Serviceprovider.Cep').value = (conteudo.cep.replace(/\D/g, ''));
+        document.getElementById('Serviceprovider.Numero').value = (conteudo.numero);
+    };
+</script>

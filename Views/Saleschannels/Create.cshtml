@@ -1,0 +1,23 @@
+﻿@model MeuHelp.Models.Saleschannel
+@{
+    ViewData["Title"] = "Adicionar canal de venda";
+}
+<h4 class="display-4">Adicionar canal de venda</h4>
+<form asp-action="Create">
+    <div class="form-row">
+        <div class="form-group-sm col-md-6">
+            <label asp-for="Nome" class="control-label">Nome:</label>
+            <input asp-for="Nome" class="form-control form-control-sm" />
+        </div>
+    </div>
+        <div class="form-row botao">
+            <div class="col-6">
+                <a asp-action="Index">
+                    <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+                </a>
+            </div>
+            <div class="col-6">
+                <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+            </div>
+        </div>
+</form>

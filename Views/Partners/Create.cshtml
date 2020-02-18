@@ -1,0 +1,245 @@
+﻿@model MeuHelp.Models.ViewModels.PartnerFormViewModel
+@{
+    ViewData["Title"] = "Adicionar prestador de serviço - Pessoa física";
+}
+<h2 class="display-4">Adicionar prestador de serviço - Pessoa física</h2>
+<form asp-action="Create">
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Tipo de serviço</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <div class="form-group">
+                <label asp-for="Partner.TypeserviceId" class="control-label">Tipo de serviço:</label>
+                <select asp-for="Partner.TypeserviceId" class="form-control form-control-sm" asp-items="@(new SelectList(Model.Typeservice,"Id","Nome"))"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Dados do Fornecedor</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.Cpf" class="control-label">Cpf:</label>
+                <input asp-for="Partner.Cpf" name="Partner.Cpf" id="Partner.Cpf" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="11" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Partner.Nome" class="control-label">Nome:</label>
+                <input asp-for="Partner.Nome" name="Partner.Nome" id="Partner.Nome" class="form-control form-control-sm" maxlength="50" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.Cep" class="control-label">Cep:</label>
+                <input asp-for="Partner.Cep" name="Partner.Cep" id="Partner.Cep" class="form-control form-control-sm" maxlength="8" onblur="pesquisacep(this.value)" onkeypress="return somenteNumeros(event)" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Partner.Logradouro" class="control-label">Logradouro:</label>
+                <input asp-for="Partner.Logradouro" name="Partner.Logradouro" id="Partner.Logradouro" class="form-control form-control-sm" maxlength="50" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Partner.Numero" class="control-label">Número:</label>
+                <input asp-for="Partner.Numero" name="Partner.Numero" id="Partner.Numero" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Partner.Complemento" class="control-label">Comp.:</label>
+                <input asp-for="Partner.Complemento" name="Partner.Complemento" id="Partner.Complemento" class="form-control form-control-sm" maxlength="20" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Partner.Bairro" class="control-label">Bairro:</label>
+                <input asp-for="Partner.Bairro" name="Partner.Bairro" id="Partner.Bairro" class="form-control form-control-sm" maxlength="20" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Partner.Cidade" class="control-label">Cidade:</label>
+                <input asp-for="Partner.Cidade" name="Partner.Cidade" id="Partner.Cidade" class="form-control form-control-sm" maxlength="20" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.Estado" class="control-label">Estado:</label>
+                <input asp-for="Partner.Estado" name="Partner.Estado" id="Partner.Estado" class="form-control form-control-sm" maxlength="20" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Responsável</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.Email" class="control-label">E-mail:</label>
+                <input asp-for="Partner.Email" class="form-control form-control-sm" maxlength="40" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.DataNascimento" class="control-label">Data nasc.:</label>
+                <input type="date" asp-for="Partner.DataNascimento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Partner.Rg" class="control-label">Rg:</label>
+                <input asp-for="Partner.Rg" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="11" />
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="form-group">
+                <label asp-for="Partner.Cpf" class="control-label">Cpf:</label>
+                <input asp-for="Partner.Cpf" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="11" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.Telefone" class="control-label">Telefone:</label>
+                <input asp-for="Partner.Telefone" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.Celular" class="control-label">Celular:</label>
+                <input asp-for="Partner.Celular" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="10" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-12">
+            <h4>Negociação Financeira</h4>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.ValorSaida" class="control-label">Valor de saída:</label>
+                <input asp-for="Partner.ValorSaida" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.KmSaida" class="control-label">Km de saída:</label>
+                <input asp-for="Partner.KmSaida" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.ValorExesso" class="control-label">Valor de exesso:</label>
+                <input asp-for="Partner.ValorExesso" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.KmExesso" class="control-label">Km de exesso:</label>
+                <input asp-for="Partner.KmExesso" class="form-control" maxlength="10" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.ValorPatins" class="control-label">Valor unidade patins:</label>
+                <input asp-for="Partner.ValorPatins" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.ValorRoda" class="control-label">Valor unidade Roda:</label>
+                <input asp-for="Partner.ValorRoda" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.ValorDiaEstacionamento" class="control-label">Valor dia estacionamento:</label>
+                <input asp-for="Partner.ValorDiaEstacionamento" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label asp-for="Partner.ValorDestombamento" class="control-label">Valor destombamento:</label>
+                <input asp-for="Partner.ValorDestombamento" class="form-control" maxlength="10" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label asp-for="Partner.ValorHoraParada" class="control-label">Valor hora parada:</label>
+                <input asp-for="Partner.ValorHoraParada" class="form-control" maxlength="10" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row botao">
+        <div class="col-md-11">
+            <a asp-action="Index">
+                <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+            </a>
+        </div>
+        <div class="col-md-1">
+            <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+        </div>
+    </div>
+
+</form>
+<script>
+    //Service Provider CEP
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            document.getElementById('Partner.Logradouro').value = (conteudo.logradouro);
+            document.getElementById('Partner.Bairro').value = (conteudo.bairro);
+            document.getElementById('Partner.Cidade').value = (conteudo.localidade);
+            document.getElementById('Partner.Estado').value = (conteudo.uf);
+        }
+        else {
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+    function pesquisacep(valor) {
+        var cep = valor.replace(/\D/g, '');
+        if (cep != "") {
+            var script = document.createElement('script');
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+            console.log(script);
+            document.body.appendChild(script);
+        }
+        else {
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+        }
+    };
+    function pesquisaCnpj(cnpj) {
+        cnpj = cnpj.replace(/\D/g, '');
+        if (cnpj != "") {
+            var script = document.createElement('script');
+            script.src = 'https://www.receitaws.com.br/v1/cnpj/' + encodeURI(cnpj) + '?callback=jsonp_z0p2';
+            document.body.appendChild(script);
+        }
+    };
+    function jsonp_z0p2(conteudo) {
+        document.getElementById('Partner.Logradouro').value = (conteudo.logradouro);
+        document.getElementById('Partner.Bairro').value = (conteudo.bairro);
+        document.getElementById('Partner.Cidade').value = (conteudo.municipio);
+        document.getElementById('Partner.Estado').value = (conteudo.uf);
+        document.getElementById('Partner.RazaoSocial').value = (conteudo.nome);
+        document.getElementById('Partner.Cep').value = (conteudo.cep.replace(/\D/g, ''));
+        document.getElementById('Partner.Numero').value = (conteudo.numero);
+    };
+</script>

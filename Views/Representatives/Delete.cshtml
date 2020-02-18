@@ -1,0 +1,23 @@
+﻿@model MeuHelp.Models.Representative
+@{
+    ViewData["Title"] = "Apagar vendedor";
+}
+<h2 class="display-4">Apagar plano</h2>
+<h3>Tem certeza de que deseja excluir isso?</h3>
+<div>
+    <h4>Vendedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>|
+        <input type="submit" value="Apagar" class="btn btn-sm btn-danger" />
+    </form>
+</div>

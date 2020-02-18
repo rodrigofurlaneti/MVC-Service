@@ -1,0 +1,36 @@
+﻿@model MeuHelp.Models.Plan
+
+@{
+    ViewData["Title"] = "Adicionar plano";
+}
+<h2 class="display-4">Adicionar plano</h2>
+<form asp-action="Create">
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label">Nome:</label>
+                <input asp-for="Nome" name="Nome" id="Nome" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label">Valor:</label>
+                <input asp-for="Valor" name="Valor" id="Valor" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row botao">
+        <div class="col-md-11">
+            <a asp-action="Index">
+                <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+            </a>
+        </div>
+        <div class="col-md-1">
+            <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+        </div>
+        <p id="status"></p>
+    </div>
+</form>
+
+
+

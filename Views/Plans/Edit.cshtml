@@ -1,0 +1,40 @@
+﻿@model MeuHelp.Models.Plan
+
+@{
+    ViewData["Title"] = "Editar plano";
+}
+
+<h4>Plano</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label">Nome:</label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label">Valor:</label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <a asp-action="Index">
+                        <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

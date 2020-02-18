@@ -1,0 +1,169 @@
+﻿@model MeuHelp.Models.Serviceprovider
+@{
+    ViewData["Title"] = "Detalhar prestator de serviço - Pessoa jurídica";
+}
+    <h2 class="display-4">Detalhar prestador de serviço - Pessoa jurídica</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+        <dt>
+            Razão social
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Data de nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rg)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rg)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Complemento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt>
+            Tipo de serviço
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Typeservice.Nome)
+        </dd>
+        <dt>
+            Valor saída
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorSaida)
+        </dd>
+        <dt>
+            Km saída
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KmSaida)
+        </dd>
+        <dt>
+            Valor exesso
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorExesso)
+        </dd>
+        <dt>
+            Km exesso
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KmExesso)
+        </dd>
+        <dt>
+            Valor patins
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorPatins)
+        </dd>
+        <dt>
+            Valor roda
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorRoda)
+        </dd>
+        <dt>
+            Valor dia de estacionamento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorDiaEstacionamento)
+        </dd>
+        <dt>
+            Valor destombamento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorDestombamento)
+        </dd>
+        <dt>
+            Valor hora parada
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorHoraParada)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+</div>

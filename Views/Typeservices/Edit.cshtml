@@ -1,0 +1,31 @@
+﻿@model MeuHelp.Models.Typeservice
+
+@{
+    ViewData["Title"] = "Editar tipo de serviço";
+}
+<h4 class="display-4">Editar tipo de serviço</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label">Nome:</label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-row botao">
+                <div class="col-md-11">
+                    <a asp-action="Index">
+                        <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

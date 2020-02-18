@@ -1,0 +1,9 @@
+﻿.botao {
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.quantTd {
+    color: red;
+    font-size: 0.9em;
+    float: right;
+}

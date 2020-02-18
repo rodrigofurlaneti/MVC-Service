@@ -1,0 +1,318 @@
+﻿@model MeuHelp.Models.ViewModels.CollaboratorFormViewModel
+@{
+    ViewData["Title"] = "Editar colaborador";
+}
+
+<h2 class="display-4">Editar um colaborador</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Collaborator.Id" />
+    <div class="form-row">
+        <div class="form-group-sm col-md-4">
+            <label asp-for="Collaborator.LegalpersonId" class="control-label">Pessoa jurídica:</label>
+            <select asp-for="Collaborator.LegalpersonId" class="form-control form-control-sm" asp-items="@(new SelectList(Model.Legalpersons,"Id","RazaoSocial"))"></select>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Nome" class="control-label">Nome:</label>
+                <input asp-for="Collaborator.Nome" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Cpf" class="control-label">Cpf:</label>
+                <input asp-for="Collaborator.Cpf" class="form-control form-control-sm" type="number" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Rg" class="control-label">Rg:</label>
+                <input asp-for="Collaborator.Rg" class="form-control form-control-sm" type="number" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Email" class="control-label">E-mail:</label>
+                <input asp-for="Collaborator.Email" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.DataNascimento" class="control-label">Data de nasc.:</label>
+                <input type="text" asp-for="Collaborator.DataNascimento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Celular" class="control-label">Celular:</label>
+                <input asp-for="Collaborator.Celular" class="form-control form-control-sm" type="number" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Telefone" class="control-label">Telefone:</label>
+                <input asp-for="Collaborator.Telefone" class="form-control form-control-sm" type="number" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.NomeMae" class="control-label">Nome da mãe:</label>
+                <input asp-for="Collaborator.NomeMae" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.ShippingwayId" class="control-label">Forma de envio:</label>
+                <select asp-for="Collaborator.ShippingwayId" asp-items="@(new SelectList(Model.Shippingways,"Id","Nome"))" class="form-control form-control-sm"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="form-group">
+                <label asp-for="Collaborator.Sexo" class="control-label">Sexo:</label>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="gridRadios1" value="Maculino" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Masculino
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sexo" id="gridRadios2" value="Feminino">
+                            <label class="form-check-label" for="gridRadios2">
+                                Feminino
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="form-row">
+        <hr />
+        <div class="col-md-12">
+            <h4>Endereço</h4>
+            <hr />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Cep" class="control-label">Cep:</label>
+                <input asp-for="Collaborator.Cep" id="Collaborator.Cep" name="Collaborator.Cep" class="form-control form-control-sm" onkeypress="return somenteNumeros(event)" maxlength="8" onblur="pesquisacep(this.value)" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Collaborator.Numero" class="control-label">Número:</label>
+                <input asp-for="Collaborator.Numero" id="Collaborator.Numero" name="Collaborator.Numero" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Collaborator.Complemento" class="control-label">Comp.:</label>
+                <input asp-for="Collaborator.Complemento" id="Collaborator.Complemento" name="Collaborator.Complemento" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Collaborator.Logradouro" class="control-label">Logradouro:</label>
+                <input asp-for="Collaborator.Logradouro" id="Collaborator.Logradouro" name="Collaborator.Logradouro" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Bairro" class="control-label">Bairro:</label>
+                <input asp-for="Collaborator.Bairro" id="Collaborator.Bairro" name="Collaborator.Bairro" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.Cidade" class="control-label">Cidade:</label>
+                <input asp-for="Collaborator.Cidade" id="Collaborator.Cidade" name="Collaborator.Cidade" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Collaborator.Estado" class="control-label">Estado:</label>
+                <input asp-for="Collaborator.Estado" id="Collaborator.Estado" name="Collaborator.Estado" class="form-control form-control-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Veículo</h4>
+            <hr />
+        </div>
+        <div class="col-md-1">
+            <h4>Conta</h4>
+            <hr />
+        </div>
+        <div class="col-md-2">
+            <h4>Pagamento</h4>
+            <hr />
+        </div>
+        <div class="col-md-2">
+            <h4>Odonto</h4>
+            <hr />
+        </div>
+        <div class="col-md-3">
+            <h4>Plano</h4>
+            <hr />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Collaborator.PlacaVeiculo" class="control-label">Placa:</label>
+                <input asp-for="Collaborator.PlacaVeiculo" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Collaborator.AnoVeiculo" class="control-label">Ano:</label>
+                <input asp-for="Collaborator.AnoVeiculo" class="form-control form-control-sm" maxlength="4" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.ModeloVeiculo" class="control-label">Modelo veículo:</label>
+                <input asp-for="Collaborator.ModeloVeiculo" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-1">
+            <div class="form-group">
+                <label asp-for="Collaborator.Conta" class="control-label">Conta:</label>
+                <input asp-for="Collaborator.Conta" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Collaborator.DataPagamento">Dia para o pagamento:</label>
+                    <select asp-for="Collaborator.DataPagamento" multiple="" class="form-control form-control-sm" id="exampleSelect2">
+                        <option>Isento</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Collaborator.Odonto">Odonto:</label>
+                    <select asp-for="Collaborator.Odonto" multiple="" class="form-control form-control-sm" id="Collaborator.Odonto">
+                        <option>Sem plano</option>
+                        <option>Bem +</option>
+                        <option>Inpla</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-sm col-md-3">
+            <div class="form-group">
+                <label asp-for="Collaborator.PlanId" class="control-label">Plano:</label>
+                <select asp-for="Collaborator.PlanId" asp-items="@(new SelectList(Model.Plans,"Id","Nome"))" class="form-control form-control-sm"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Vigência do Contrato</h4>
+            <hr />
+        </div>
+        <div class="col-md-6">
+            <h4>Informações de Valores</h4>
+            <hr />
+        </div>
+        <div class="col-md-2">
+            <h4>Vendas</h4>
+            <hr />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.InicioVigencia" class="control-label">Inicio da vigência:</label>
+                <input type="text" asp-for="Collaborator.InicioVigencia" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.FimVigencia" class="control-label">Fim da vigência:</label>
+                <input type="text" asp-for="Collaborator.FimVigencia" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.DataVenda" class="control-label">Data da venda:</label>
+                <input type="text" asp-for="Collaborator.DataVenda" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.DataAdesao" class="control-label">Data da adesão:</label>
+                <input type="text" asp-for="Collaborator.DataAdesao" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.DataVencimentoAdesao" class="control-label">Vencimento da adesão:</label>
+                <input type="text" asp-for="Collaborator.DataVencimentoAdesao" class="form-control form-control-sm" />
+            </div>
+        </div>
+        <div class="form-group-sm col-md-2">
+            <div class="form-group">
+                <label asp-for="Collaborator.SaleschannelId" class="control-label">Canal de venda:</label>
+                <select asp-for="Collaborator.SaleschannelId" asp-items="@(new SelectList(Model.Saleschannels,"Id","Nome"))" class="form-control form-control-sm"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row botao">
+        <div class="col-md-11">
+            <a asp-action="Index">
+                <input type="button" value="Voltar" class="btn btn-sm btn-primary" />
+            </a>
+        </div>
+        <div class="col-md-1">
+            <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+        </div>
+    </div>
+</form>
+<script>
+ //COLLABORATOR CEP
+ //       function meu_callback(conteudo) {
+ //       if (!("erro" in conteudo)) {
+ //           document.getElementById('Collaborator.Logradouro').value=(conteudo.logradouro);
+ //           document.getElementById('Collaborator.Bairro').value=(conteudo.bairro);
+ //           document.getElementById('Collaborator.Cidade').value=(conteudo.localidade);
+ //           document.getElementById('Collaborator.Estado').value=(conteudo.uf);
+ //       }
+ //       else {
+ //           limpa_formulário_cep();
+ //           alert("CEP não encontrado.");
+ //       }
+ //   }
+ //function pesquisacep(valor) {
+ //       var cep = valor.replace(/\D/g, '');
+ //    if (cep != "")
+ //    {
+ //        var script = document.createElement('script');
+ //        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+ //        console.log(script);
+ //        document.body.appendChild(script);
+ //        document.getElementById('Collaborator.Logradouro').value = (script.logradouro);
+ //        document.getElementById('Collaborator.Bairro').value = (script.bairro);
+ //        document.getElementById('Collaborator.Cidade').value = (script.localidade);
+ //        document.getElementById('Collaborator.Estado').value = (script.uf);
+ //    }
+ //    else
+ //    {
+ //               limpa_formulário_cep();
+ //               alert("Formato de CEP inválido.");
+ //    }
+ //   };
+</script>

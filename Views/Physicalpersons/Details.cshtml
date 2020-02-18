@@ -1,0 +1,177 @@
+﻿@model MeuHelp.Models.Physicalperson
+
+@{
+    ViewData["Title"] = "Detalhar pessoa física";
+}
+<h2 class="display-4">Detalhar pessoa física</h2>
+<div>
+    <h4>Pessoa física</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Data de nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rg)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rg)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeMae)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomeMae)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sexo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Complemento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt>
+            Placa do veiculo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PlacaVeiculo)
+        </dd>
+        <dt>
+            Ano do veiculo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnoVeiculo)
+        </dd>
+        <dt>
+            Modelo do veiculo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModeloVeiculo)
+        </dd>
+        <dt>
+            Data de pagamento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataPagamento)
+        </dd>
+        <dt>
+            Odonto
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Odonto)
+        </dd>
+        <dt>
+            Plano
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Plan.Nome)
+        </dd>
+        <dt>
+            Inicio da vigencia
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InicioVigencia)
+        </dd>
+        <dt>
+            Fim da vigencia
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FimVigencia)
+        </dd>
+        <dt>
+            Data da venda
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataVenda)
+        </dd>
+        <dt>
+            Data de vencimento da adesao
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataVencimentoAdesao)
+        </dd>
+        <dt>
+            Data da adesao
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataAdesao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+</div>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MeuHelp.Models.Legalperson>
+
+@{
+    ViewData["Title"] = "Pessoa jurídica";
+}
+
+<h2 class="display-4">Pessoa jurídica</h2>
+
+<p>
+    <a asp-action="Create">Adicionar pessoa jurídica</a>
+</p>
+<form class="form-inline">
+    <div class="form-group mb-2">
+        <label for="staticLegalPerson" class="sr-only">Buscar razão social:</label>
+        <input type="text" readonly class="form-control-plaintext" id="staticLegalPerson" value="Buscar razão social:">
+    </div>
+    <div class="form-group mb-2">
+        <label for="input>Razaosocial" class="sr-only">Razao social</label>
+        <input type="text" class="form-control form-control-sm" id="myInput" onkeyup="myFunctionFiltroRazaoSocial()" placeholder="Razao social">
+    </div>
+</form>
+<div class="form-group quantTd mb-6">
+    <label>Quantidade de pessoas jurídicas:</label>
+    <label id="quantTd"></label>
+</div>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                Cnpj
+            </th>
+            <th>
+                Razão social
+            </th>
+            <th>
+                Detalhar
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Apagar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazaoSocial)
+            </td>
+            <td>
+                <a asp-action="Details" class="btn btn-sm btn-warning" asp-route-id="@item.Id">Detalhar</a>
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-sm btn-info" asp-route-id="@item.Id">Editar</a>
+            </td>
+            <td>
+                <a asp-action="Delete" class="btn btn-sm btn-danger" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+window.onload = contaLinhasTabela();
+function myFunctionFiltroRazaoSocial() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+    }
+        function contaLinhasTabela() {
+        var tabela = document.getElementById('myTable');
+        var linhas = tabela.getElementsByTagName('tr');
+        document.getElementById("quantTd").innerHTML = linhas.length - 1;
+    }
+</script>
